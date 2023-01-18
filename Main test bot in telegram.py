@@ -111,12 +111,16 @@ def start(message):
                     except:
                         bot.send_message('1157878010', 'Что-то пошло не так :(')
 
-    schedule_music = schedule.Scheduler()
-    schedule_music.every().day.at("22:14").do(send)
+    schedule1 = schedule.Scheduler()
+    schedule1.every().day.at("11:00").do(send)
+    schedule2 = schedule.Scheduler()
+    schedule2.every().day.at("16:00").do(send)
+    schedule2 = schedule.Scheduler()
+    schedule2.every().day.at("20:00").do(send)
 
     def Timer():
         while True:
-            schedule_music.run_pending()
+            schedule1.run_pending()
     Thread(target=Timer).start()
     bot.send_message(message.chat.id, text="🚀 Добро пожаловать {0.first_name} 👋!".format(message.from_user), reply_markup=main_markup_kurkino())
 
